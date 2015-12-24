@@ -26,10 +26,14 @@ def parseHTML(lien):
         words.append(text)
 
     wordlist = ''.join(words).split()
-    wordCounter(wordlist)
-    return ''.join(words)
+    counts = wordCounter(wordlist)
+    results = []
+    for letter, count in counts:
+        results.append('%s: %7d' % (letter, count))
+
+    return ', <br>'.join(results)
 
 
 def wordCounter(words):
-    counts = Counter(words)
-    print(counts)
+    counts = Counter(words).most_common(20)
+    return counts
