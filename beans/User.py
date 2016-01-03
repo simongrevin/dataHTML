@@ -13,3 +13,8 @@ class User:
     		'password': self.password,
             'history': self.history
     	}
+
+    @classmethod
+    def fromdict(cls,dic):
+        user = cls(dic['login'],dic['email'],dic['password'])
+        return user
